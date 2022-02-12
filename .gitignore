@@ -3,3 +3,6 @@ node_modules
 dist
 dist-ssr
 *.local
+words-script.js
+words.txt
+deploy.sh
