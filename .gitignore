@@ -6,3 +6,5 @@ dist-ssr
 words-script.js
 words.txt
 deploy.sh
+
+/backend/.serverless
