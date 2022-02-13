@@ -1,5 +1,5 @@
 {
-  "name": "vue-wordle",
+  "name": "jlavs-words",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
@@ -7,6 +7,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^0.26.0",
     "vue": "^3.2.25",
     "word-list": "^3.1.0"
   },

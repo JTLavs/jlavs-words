@@ -5,8 +5,7 @@ import Keyboard from './Keyboard.vue'
 import { LetterState } from './types'
 
 var word;
-var answers;
-var length;
+var length = $ref('');
 var allowedGuesses;
 var board = $ref([]);
 
@@ -24,7 +23,7 @@ let gameOver = $ref(false);
 const onKeyup = (e: KeyboardEvent) => onKey(e.key)
 
 // Keep track of revealed letters for the virtual keyboard
-const letterStates: Record<string, LetterState> = $ref({})
+var letterStates: Record<string, LetterState> = $ref({})
 
 window.addEventListener('keyup', onKeyup)
 
@@ -34,8 +33,8 @@ onUnmounted(() => {
 
 play();
 
-function play() {
-  ({ word, answers, length, allowedGuesses } = setup());
+async function play() {
+  ({ word, length, allowedGuesses } = await setup());
   
   board = Array.from({ length: 6 }, () =>
     Array.from({ length }, () => ({

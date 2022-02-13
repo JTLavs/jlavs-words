@@ -1,22 +1,21 @@
 'use strict';
 
-import { allowedWords } from './words';
+const words = require('./words');
 
 module.exports.index = async (event) => {
-  const { queryStringParameters } = event;
+  if (event["queryStringParameters"]) {
+    const { length } = event["queryStringParameters"];
 
-  const { length } = queryStringParameters;
-
-  if (!length) {
-    return {
-      statusCode:200,
-      body: JSON.stringify({ message: 'All words' })
+    if (!length) {
+      return { statusCode: 400, body: JSON.stringify({message: 'No length has been provided'})}
     }
-  }
 
+    const allowed = words.allowedWords.filter(el => el.length == length);
+    const answers = words.possibleAnswers.filter(el => el.length == length);
   
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ words: allowedWords.filter(el => el.length() ) })
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ answers, allowed }),
+    }
   }
 };

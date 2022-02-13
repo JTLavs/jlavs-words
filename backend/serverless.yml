@@ -8,7 +8,8 @@ provider:
   region: eu-west-1
 
 functions:
-  hello:
+  index:
+    name: jlavs-words-lambda
     handler: handler.index
     events:
       - httpApi:
